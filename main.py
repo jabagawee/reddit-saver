@@ -24,11 +24,8 @@ for bookmark in bookmarks:
     folders[str(bookmark.subreddit)].append(Bookmark(bookmark.title, str(bookmark.permalink)))
 
 output = ["<!DOCTYPE NETSCAPE-Bookmark-file-1>",
-"<title>Bookmarks</title>",
-"<h1>Bookmarks</h1>",
-"<dl><p>",
-'<dt><h3 ADD_DATE="%d" LAST_MODIFIED="%d">Reddit</h3>',
-"<dl><p>"]
+"<title>Bookmarks</title><h1>Bookmarks</h1>",
+'<dl><p><dt><h3 ADD_DATE="%d" LAST_MODIFIED="%d">Reddit</h3><dl><p>']
 
 for subreddit in sorted(folders.keys()):
     output.append('<dt><h3 ADD_DATE="%d" LAST_MODIFIED="%d">%s</h3>' % (DATE, DATE, subreddit))
@@ -37,7 +34,6 @@ for subreddit in sorted(folders.keys()):
         output.append('<dt><a href="%s" ADD_DATE="%d">%s</a>' % (bookmark.url, DATE, bookmark.title))
     output.append("</p></dl>")
 
-output.append("</p></dl>")
-output.append("</p></dl>")
+output.append("</p></dl></p></dl>")
 output = "".join(output)
 open("bookmarks.html", "w").write(output)
