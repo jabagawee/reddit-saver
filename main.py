@@ -16,7 +16,7 @@ r.login(input("Username: "),getpass.getpass())
 
 bookmarks = list(r.user.get_saved(limit=LIMIT))
 if len(bookmarks) == REDDIT_MAX:
-    sys.stderr.write("Warning: we've retrieved 1000 bookmarks (the limit set by reddit), but there may be more\n")
+    sys.stderr.write("Warning: we've retrieved %d bookmarks (the limit set by reddit), but there may be more\n" % REDDIT_MAX)
 
 folders = defaultdict(list)
 Bookmark = namedtuple("Bookmark", ["title", "url"])
